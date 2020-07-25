@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.board">
+
+	<!-- 1. SelectList -->
+  <select id="selectBoardList" resultType="dto.BoardDto">
+	SELECT	NO
+		,	TITLE
+		,	USER_ID
+		,	CONTENT
+		,	BOARDABLE
+		,	WRITEDATE	
+	FROM	BOARD
+  </select>
+  	<!-- 2. SelectOne -->
+  <select id="selectBoardByNo" parameterType="int" resultType="dto.BoardDto">
+  	SELECT	NO
+		,	TITLE
+		,	USER_ID
+		,	CONTENT
+		,	BOARDABLE
+		,	WRITEDATE	
+	FROM	BOARD
+	WHERE	NO = #{no}
+  </select>	
+  	
+  	<!-- 3. Insert -->
+  <insert id="insertBoard" parameterType="dto.BoardDto">
+  	INSERT INTO BOARD(NO, TITLE, USER_ID, CONTENT)
+  		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{user_id}, #{content})
+  </insert>	
+  	<!-- 4. Update -->
+  <update id="" parameterType="">
+  
+  </update>	
+  	<!-- 5. Delete(삭제한 데이터 보관을 위한 업데이트문) -->
+  <!-- <delete id="">
+  </delete>	 -->
+  <update id="deleteBoard" parameterType="int">
+  	UPDATE	BOARD
+  	SET		(BOARDABLE = 0)
+  	WHERE	NO = #{no}	 
+  </update>
+</mapper>
