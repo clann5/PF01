@@ -24,7 +24,7 @@ public class BoardController extends HttpServlet {
 		
 		BoardCommand command = null;
 		switch (mapping) {
-		case "listBoard.do": 
+		case "/listBoard.do": 
 			command = new BoardListCommand();
 			break;
 		}
