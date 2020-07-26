@@ -30,15 +30,5 @@
   		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{user_id}, #{content})
   </insert>	
   	<!-- 4. Update -->
-  <update id="" parameterType="">
   
-  </update>	
-  	<!-- 5. Delete(삭제한 데이터 보관을 위한 업데이트문) -->
-  <!-- <delete id="">
-  </delete>	 -->
-  <update id="deleteBoard" parameterType="int">
-  	UPDATE	BOARD
-  	SET		(BOARDABLE = 0)
-  	WHERE	NO = #{no}	 
-  </update>
 </mapper>
