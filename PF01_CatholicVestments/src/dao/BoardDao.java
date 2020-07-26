@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+
 import dto.BoardDto;
 import mybatis.config.DBService;
 
@@ -23,7 +24,13 @@ public class BoardDao {
 	// 기능
 	// 1.selectBoardList
 	public List<BoardDto> selectBoardList(){
+		System.out.println("ss 호출전");
+		
+		System.out.println(" factory : " + factory);
+		
+
 		SqlSession ss = factory.openSession();
+		System.out.println("ss 호출후");
 		List<BoardDto> list = ss.selectList("mybatis.mapper.board.selectBoardList");
 		ss.close();
 		System.out.println("ClannLog: Dao.SelectBoardList 호출");

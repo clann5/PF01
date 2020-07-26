@@ -5,11 +5,10 @@ import java.sql.Date;
 public class BoardDto {
 	private int no;
 	private String title; 
-	private String userId; 
+	private String user_id; 
 	private String content;
 	private int boardAble; // 0: 삭제, 1: 읽기가능
-	private Date writeDate;
-	
+	private Date write_date;
 	public int getNo() {
 		return no;
 	}
@@ -22,11 +21,11 @@ public class BoardDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getContent() {
 		return content;
@@ -40,10 +39,12 @@ public class BoardDto {
 	public void setBoardAble(int boardAble) {
 		this.boardAble = boardAble;
 	}
-	public Date getWriteDate() {
-		return writeDate;
+	public Date getWrite_date() {
+		return write_date;
 	}
-	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
+	public void setWrite_date(Date write_date) {
+		this.write_date = write_date;
 	}
+	
+	
 }

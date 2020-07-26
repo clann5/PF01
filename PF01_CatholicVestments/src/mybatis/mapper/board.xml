@@ -9,9 +9,7 @@
 	SELECT	NO
 		,	TITLE
 		,	USER_ID
-		,	CONTENT
-		,	BOARDABLE
-		,	WRITEDATE	
+		,	WRITE_DATE	
 	FROM	BOARD
   </select>
   	<!-- 2. SelectOne -->
