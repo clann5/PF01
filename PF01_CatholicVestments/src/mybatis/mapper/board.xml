@@ -9,6 +9,8 @@
 	SELECT	NO
 		,	TITLE
 		,	USER_ID
+		,	CONTENT
+		,	BOARDABLE
 		,	WRITE_DATE	
 	FROM	BOARD
   </select>
@@ -19,7 +21,7 @@
 		,	USER_ID
 		,	CONTENT
 		,	BOARDABLE
-		,	WRITEDATE	
+		,	WRITE_DATE	
 	FROM	BOARD
 	WHERE	NO = #{no}
   </select>	

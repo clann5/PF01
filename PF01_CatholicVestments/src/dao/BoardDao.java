@@ -38,24 +38,25 @@ public class BoardDao {
 	}
 	
 	// 2.selectBoardByNo
-	public BoardDto selectBoardByNo() {
+	public BoardDto selectBoardByNo(int no) {
 		SqlSession ss = factory.openSession();
-		BoardDto boardDto = ss.selectOne("mybatis.mapper.board.selectBoardByNo");
+		BoardDto boardDto = ss.selectOne("mybatis.mapper.board.selectBoardByNo", no);
 		ss.close();
 		System.out.println("ClannLog: Dao.SelectBoardByNo 호출");
 		return boardDto;
 	}
 	
 	// 3.insertBoard
-	public int insertBoard() {
+	public int insertBoard(BoardDto boardDto) {
 		SqlSession ss = factory.openSession(false);
-		int result = ss.insert("mybatis.mapper.board.insertBoard");
+		int result = ss.insert("mybatis.mapper.board.insertBoard", boardDto);
 		if (result > 0) {
 			ss.commit();
 			System.out.println("ClannLog: Dao.insertoard 성공");
 		} else {
 			System.out.println("ClannLog: Dao.insertoard 실패");
 		}
+		ss.close();
 		return result;
 	}
 	

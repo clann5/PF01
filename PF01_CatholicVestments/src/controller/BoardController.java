@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.BoardCommand;
 import command.BoardListCommand;
+import command.BoardViewCommand;
+import command.InsertBoardCommand;
+import command.InsertBoardPageCommand;
 
 @WebServlet("*.do")
 public class BoardController extends HttpServlet {
@@ -27,7 +31,17 @@ public class BoardController extends HttpServlet {
 		case "/listBoard.do": 
 			command = new BoardListCommand();
 			break;
+		case "/viewBoard.do":
+			command = new BoardViewCommand();
+			break;
+		case "/insertBoardPage.do":
+			command = new InsertBoardPageCommand();
+			break;
+		case "/insertBoard.do":
+			command = new InsertBoardCommand();
+			break;
 		}
+		
 		System.out.println("path전");
 		String path = command.execute(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
