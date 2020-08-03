@@ -12,6 +12,9 @@
 		,	CONTENT
 		,	BOARDABLE
 		,	WRITE_DATE	
+		,	FILENAME
+		,	PW
+		,	HIT
 	FROM	BOARD
   </select>
   	<!-- 2. SelectOne -->
@@ -21,16 +24,43 @@
 		,	USER_ID
 		,	CONTENT
 		,	BOARDABLE
-		,	WRITE_DATE	
-	FROM	BOARD
-	WHERE	NO = #{no}
+		,	WRITE_DATE
+		,	FILENAME
+		,	PW
+		,	HIT
+	  FROM	BOARD
+	 WHERE	NO = #{no}
   </select>	
   	
   	<!-- 3. Insert -->
   <insert id="insertBoard" parameterType="dto.BoardDto">
-  	INSERT INTO BOARD(NO, TITLE, USER_ID, CONTENT)
-  		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{user_id}, #{content})
+  	INSERT
+  	  INTO	BOARD(NO, TITLE, USER_ID, CONTENT, FILENAME, PW)
+  	VALUES	(BOARD_SEQ.NEXTVAL, #{title}, #{user_id}, #{content}, #{filename}, #{pw} )
   </insert>	
   	<!-- 4. Update -->
+  <update id="updateBoard" parameterType="dto.BoardDto">
+  	UPDATE	BOARD
+ 	<if test="filename == null">
+  	   SET	TITLE = #{title}, CONTENT = #{content}
+  	</if>
+  	<if test="filename != null">
+  	   SET	TITLE = #{title}, CONTENT = #{content}, FILENAME = #{filename}
+  	</if>
+  	 WHERE	NO = #{no}
+  </update>
   
+  <!-- 5. Delete -->
+  	<delete id="deleteBoard" parameterType="int">
+  	DELETE
+  	  FROM	BOARD
+  	 WHERE	NO = #{no}
+  	</delete>
+  
+  <!-- 6. Hit -->
+  <update id="updateHit" parameterType="int">
+  	UPDATE	BOARD
+  	   SET	HIT = HIT + 1
+  	 WHERE NO = #{no}
+  </update>
 </mapper>

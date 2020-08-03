@@ -42,7 +42,7 @@ display: flex;
 				<li><a href="">1</a></li>
 				<li><a href="">2</a></li>
 				<li><a href="">3</a></li>
-				<li><a href="">4</a></li>
+				<li><a href="guide/roadmap.jsp">찾아오는 길</a></li>
 				<li><a href="">5</a></li>
 				<li><a href="">6</a></li>
 				<li><a href="">7</a></li>
@@ -53,7 +53,7 @@ display: flex;
 			2
 		</section>
 		<section class="info_section">
-			<a href="listBoard.do">게시판으로 이동</a>
+			<a href="boardList.do">게시판으로 이동</a>
 		</section>
 		<section class="popular_section">
 			4
