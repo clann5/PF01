@@ -11,7 +11,7 @@
 <script type="text/javascript">
 		if (${param.result} > 0) {
 			alert('수정되었습니다.');
-			location.href='/PF01_CatholicVestments/boardView.do?no='+${boardDto.no};
+			location.href='/CatholicVestments/boardView.do?no='+${boardDto.no};
 		} else {
 			alert('입력 실패');
 			history.back();

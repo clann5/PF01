@@ -31,7 +31,7 @@
 		<button onclick="fn_insert(this.form)">작성</button>
 		<input type="reset" value="초기화" />
 		<!-- contextpath 에러구간 : 임시로 project명으로 구현중 -->
-		<input type="button" value="게시판목록" onclick="location.href='/PF01_CatholicVestments/boardList.do'" />
+		<input type="button" value="게시판목록" onclick="location.href='/CatholicVestments/boardList.do'" />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
 	</form>
@@ -43,7 +43,7 @@
 				f.title.focus();
 				return;
 			}
-			f.action = '/PF01_CatholicVestments/boardInsert.do';
+			f.action = '/CatholicVestments/boardInsert.do';
 			f.submit();
 		}
 	</script>

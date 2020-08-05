@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		if (${param.result} > 0) {
 			alert('추가되었습니다.');
-			location.href='/PF01_CatholicVestments/boardList.do';
+			location.href='/CatholicVestments/boardList.do';
 		} else {
 			alert('입력 실패');
 			history.back();

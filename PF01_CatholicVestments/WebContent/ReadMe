@@ -24,8 +24,8 @@
 	20.7.26 - 게시판 CRUD
 	20.8.1 - 전송방식 설정(common.ViewAndForward) -- dto, table 수정, DML작업, File Upload / Download(1)
 	20.8.2 - File Download(2), Delete, Update, 조회수 추가, 조회수 중복증가 해결(session)
-	20.8.3 - kakaoMap API 사용
-	
+	20.8.3 - kakaoMap API -- front:javascript 사용
+	20.8.? - naverCaptcha API -- back:java 사용
 
 
 4. 작업 순서
@@ -38,5 +38,10 @@
 	- 학원 수업과 별개?로 만들기 때문에 시간이 부족할 것(시간이 많아도 시간은 부족하겠지..)
 
 6. 아쉬운점, 후회되는 점 메모
-	
+	- 개발 순서를 frontend -> backend 방향으로 진행하니 기존 코드에 수정요소가 많음
+	  -- 왜? : 전체에 대한 이해 미숙으로 순서를 똑바로 세우지 못함
+	  -- 이후 : 개발은 DB(안에서)부터 시작해야겠음
+	- 하고싶은 기능부터 하다보니 너무 못생긴 화면이 나옮
+	  -- 이후 : 최소한의 업무 순서를 만들고 지키자 : 대충(틀) -> 빨리(만들기) -> 잘(다듬기)
+	  
 7. 업데이트 예정?

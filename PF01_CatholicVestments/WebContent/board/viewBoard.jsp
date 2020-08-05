@@ -77,16 +77,16 @@
 		<input type="password" name="pw" value="" />
 		<input type="button" value="수정" onclick="fn_boardUpdate(this.form)" />
 		<input type="button" value="삭제" onclick="fn_boardDelete(this.form)" />
-		<input type="button" value="게시판목록" onclick="location.href='/PF01_CatholicVestments/boardList.do'" />
+		<input type="button" value="게시판목록" onclick="location.href='/CatholicVestments/boardList.do'" />
 	</form>
 
 	<script type="text/javascript">
 		function fn_boardUpdate(f) {
-			f.action='/PF01_CatholicVestments/boardUpdate.do';
+			f.action='/CatholicVestments/boardUpdate.do';
 			f.submit();
 		}
 		function fn_boardDelete(f) {
-			f.action='/PF01_CatholicVestments/boardDelete.do';
+			f.action='/CatholicVestments/boardDelete.do';
 			f.submit();
 		}
 	</script>

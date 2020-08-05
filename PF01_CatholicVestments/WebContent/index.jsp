@@ -46,7 +46,7 @@ display: flex;
 				<li><a href="">5</a></li>
 				<li><a href="">6</a></li>
 				<li><a href="">7</a></li>
-				<li><a href="">8</a></li>
+				<li><a href="getCaptchaImage.api">로그인화면</a></li>
 			</ul>
 		</header>
 		<section class="gallery_section">
