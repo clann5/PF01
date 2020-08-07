@@ -1,4 +1,4 @@
-package command;
+package command.etc;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CaptchaImageCommand implements CaptchaCommand {
+public class CaptchaImageCommand implements JsonCommand {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -25,7 +25,7 @@ public class CaptchaImageCommand implements CaptchaCommand {
 		String clientId = "o_JfUkabMp6WRi2tVAVi";
 		String clientSecret = "CpuP_zc3Z5";
 
-        CaptchaCommand command = new CaptchaKeyCommand();
+        JsonCommand command = new CaptchaKeyCommand();
         String key = command.execute(request, response); // https://openapi.naver.com/v1/captcha/nkey 호출로 받은 키값
 //        String key = null;
         System.out.println("key log : " + key);

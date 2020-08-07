@@ -45,8 +45,15 @@ display: flex;
 				<li><a href="guide/roadmap.jsp">찾아오는 길</a></li>
 				<li><a href="">5</a></li>
 				<li><a href="">6</a></li>
-				<li><a href="">7</a></li>
-				<li><a href="getCaptchaImage.api">로그인화면</a></li>
+				<li><a href="signupPage.member">회원가입</a></li>
+				<li>
+					<c:if test="${sessionScope.loginuser eq null }">
+						<a href="getCaptchaImage.member">로그인페이지</a>
+					</c:if>
+					<c:if test="${sessionScope.loginuser ne null }">
+						<a href="">로그아웃</a>
+					</c:if>
+				</li>
 			</ul>
 		</header>
 		<section class="gallery_section">

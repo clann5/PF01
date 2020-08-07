@@ -6,46 +6,29 @@
 
 	<!-- 1. SelectList -->
   <select id="selectBoardList" resultType="dto.BoardDto">
-	SELECT	NO
-		,	TITLE
-		,	USER_ID
-		,	CONTENT
-		,	BOARDABLE
-		,	WRITE_DATE	
-		,	FILENAME
-		,	PW
-		,	HIT
-	FROM	BOARD
+	SELECT	*
+	  FROM	BOARD
   </select>
   	<!-- 2. SelectOne -->
   <select id="selectBoardByNo" parameterType="int" resultType="dto.BoardDto">
-  	SELECT	NO
-		,	TITLE
-		,	USER_ID
-		,	CONTENT
-		,	BOARDABLE
-		,	WRITE_DATE
-		,	FILENAME
-		,	PW
-		,	HIT
-	  FROM	BOARD
-	 WHERE	NO = #{no}
-  </select>	
-  	
+  	SELECT	*
+	 WHERE	BNO = #{bNo}
+  </select>	  	
   	<!-- 3. Insert -->
   <insert id="insertBoard" parameterType="dto.BoardDto">
   	INSERT
-  	  INTO	BOARD(NO, TITLE, USER_ID, CONTENT, FILENAME, PW)
-  	VALUES	(BOARD_SEQ.NEXTVAL, #{title}, #{user_id}, #{content}, #{filename}, #{pw} )
+  	  INTO	BOARD(BNO,			MID,	BTITLE,		BCONTENT,		BFILENAME,		BPW,	BIP,	BGROUP,		BGROUPORD,		BDEPTH)
+  	VALUES	(BOARD_SEQ.NEXTVAL,	#{mId},	#{bTitle},	#{bContent},	#{bFilename},	#{bPw},	#{bIp},	#{bGroup},	#{bGroupord},	#{bDepth})
   </insert>	
   	<!-- 4. Update -->
   <update id="updateBoard" parameterType="dto.BoardDto">
   	UPDATE	BOARD
- 	<if test="filename == null">
-  	   SET	TITLE = #{title}, CONTENT = #{content}
+  	   SET
+ 	<if test="bFilename == null">
+  	   		BTITLE = #{bTitle}, BCONTENT = #{bContent}
   	</if>
-  	<if test="filename != null">
-  	   SET	TITLE = #{title}, CONTENT = #{content}, FILENAME = #{filename}
+  	<if test="bFilename != null">
+  	   		BTITLE = #{bTitle}, BCONTENT = #{bContent}, FILENAME = #{filename}
   	</if>
   	 WHERE	NO = #{no}
   </update>
@@ -60,7 +43,7 @@
   <!-- 6. Hit -->
   <update id="updateHit" parameterType="int">
   	UPDATE	BOARD
-  	   SET	HIT = HIT + 1
-  	 WHERE NO = #{no}
+  	   SET	BHIT = BHIT + 1
+  	 WHERE	BNO = #{bNo}
   </update>
 </mapper>

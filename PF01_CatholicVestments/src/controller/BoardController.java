@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.BoardCommand;
-import command.BoardDeleteCommand;
-import command.BoardListCommand;
-import command.BoardUpdateCommand;
-import command.BoardViewCommand;
-import command.BoardInsertCommand;
+import command.board.BoardCommand;
+import command.board.BoardDeleteCommand;
+import command.board.BoardInsertCommand;
+import command.board.BoardListCommand;
+import command.board.BoardUpdateCommand;
+import command.board.BoardViewCommand;
 import common.Download;
 import common.ViewAndForward;
 

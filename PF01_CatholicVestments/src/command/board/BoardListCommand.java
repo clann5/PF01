@@ -1,4 +1,4 @@
-package command;
+package command.board;
 
 import java.util.List;
 

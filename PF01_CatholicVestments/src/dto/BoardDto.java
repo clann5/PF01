@@ -3,69 +3,92 @@ package dto;
 import java.sql.Date;
 
 public class BoardDto {
-	private int no, hit;
-	private String title; 
-	private String user_id; 
-	private String content;
-	private int boardAble; // 0: 삭제, 1: 읽기가능
-	private Date write_date;
-	private String filename, pw;
-
+	private int bNo, bHit, bDelete, bGroup, bGroupOrd, bDepth;
+	private String mId, bTitle, bContent, bPw, bIp, bFilename;
+	private Date bLastModify, bRegDate;
 	
-	public int getHit() {
-		return hit;
+	public String getbFilename() {
+		return bFilename;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setbFilename(String bFilename) {
+		this.bFilename = bFilename;
 	}
-	
-	public String getPw() {
-		return pw;
+	public int getbNo() {
+		return bNo;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setbNo(int bNo) {
+		this.bNo = bNo;
 	}
-	public int getNo() {
-		return no;
+	public int getbHit() {
+		return bHit;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setbHit(int bHit) {
+		this.bHit = bHit;
 	}
-	public String getTitle() {
-		return title;
+	public int getbDelete() {
+		return bDelete;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setbDelete(int bDelete) {
+		this.bDelete = bDelete;
 	}
-	public String getUser_id() {
-		return user_id;
+	public int getbGroup() {
+		return bGroup;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setbGroup(int bGroup) {
+		this.bGroup = bGroup;
 	}
-	public String getContent() {
-		return content;
+	public int getbGroupOrd() {
+		return bGroupOrd;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setbGroupOrd(int bGroupOrd) {
+		this.bGroupOrd = bGroupOrd;
 	}
-	public int getBoardAble() {
-		return boardAble;
+	public int getbDepth() {
+		return bDepth;
 	}
-	public void setBoardAble(int boardAble) {
-		this.boardAble = boardAble;
+	public void setbDepth(int bDepth) {
+		this.bDepth = bDepth;
 	}
-	public Date getWrite_date() {
-		return write_date;
+	public String getmId() {
+		return mId;
 	}
-	public void setWrite_date(Date write_date) {
-		this.write_date = write_date;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
-	public String getFilename() {
-		return filename;
+	public String getbTitle() {
+		return bTitle;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
 	}
-	
+	public String getbContent() {
+		return bContent;
+	}
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
+	}
+	public String getbPw() {
+		return bPw;
+	}
+	public void setbPw(String bPw) {
+		this.bPw = bPw;
+	}
+	public String getbIp() {
+		return bIp;
+	}
+	public void setbIp(String bIp) {
+		this.bIp = bIp;
+	}
+	public Date getbLastModify() {
+		return bLastModify;
+	}
+	public void setbLastModify(Date bLastModify) {
+		this.bLastModify = bLastModify;
+	}
+	public Date getbRegDate() {
+		return bRegDate;
+	}
+	public void setbRegDate(Date bRegDate) {
+		this.bRegDate = bRegDate;
+	}
 }

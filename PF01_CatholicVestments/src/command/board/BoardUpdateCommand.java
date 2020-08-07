@@ -1,4 +1,4 @@
-package command;
+package command.board;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ import common.ViewAndForward;
 import dao.BoardDao;
 import dto.BoardDto;
 
-public class BoardInsertCommand implements BoardCommand {
+public class BoardUpdateCommand implements BoardCommand {
 
 	@Override
 	public ViewAndForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -21,37 +21,46 @@ public class BoardInsertCommand implements BoardCommand {
 		
 		final String DIRECTORY = "storage";
 		String realPath = request.getServletContext().getRealPath("/" + DIRECTORY);
-		File filePath = new File(realPath);
-		if (!filePath.exists()) {
-			filePath.mkdirs();
+		
+		File path = new File(realPath);
+		if (!path.exists()) {
+			path.mkdirs();
 		}
+		
 		MultipartRequest mr = new MultipartRequest(request, realPath, 1024*1024*10,"utf-8",new DefaultFileRenamePolicy());
-
-		BoardDto boardDto = new BoardDto();
-		String title = mr.getParameter("title");	
-		String user_id = mr.getParameter("user_id");
-		String content = mr.getParameter("content");
-		String filename = mr.getFilesystemName("filename");
-		String pw = mr.getParameter("pw");
 		
+		int no = Integer.parseInt(mr.getParameter("no"));
+		String title = mr.getParameter("title");
+		String content = mr.getParameter("content");
+		
+		BoardDto boardDto = new BoardDto();
+		boardDto.setNo(no);
 		boardDto.setTitle(title);
-		boardDto.setUser_id(user_id);
 		boardDto.setContent(content);
-		boardDto.setPw(pw);
-		if (mr.getFile("filename") == null) {
-			boardDto.setFilename("");
-		} else {
-			boardDto.setFilename(filename);
+		
+		HttpSession session = request.getSession();
+		String oldFile = ((BoardDto)session.getAttribute("boardDto")).getFilename();
+		
+		File newFile = mr.getFile("filename");
+
+		// 기존파일 삭제
+		if (oldFile != null && newFile != null) {
+			File file = new File(realPath, oldFile);
+			if ( file.exists()) {
+				file.delete();
+			}
 		}
 		
+		// 새 파일 저장
+		if (newFile != null) {
+			boardDto.setFilename(mr.getFilesystemName("filename"));
+		}
 		
-		int result = BoardDao.getInstance().insertBoard(boardDto);
+		int result = BoardDao.getInstance().updateBoard(boardDto); 
 		
 		ViewAndForward vaf = new ViewAndForward();
-		vaf.setPath("board/boardInsertResultPage.jsp?result="+result);
-		System.out.println("result :" + result);
+		vaf.setPath("board/boardUpdateResultPage.jsp?result=" + result);
 		vaf.setIsRedirect(true);
-		
 		return vaf;
 	}
 

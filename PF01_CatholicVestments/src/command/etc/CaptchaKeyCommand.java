@@ -1,12 +1,16 @@
-package command;
+package command.etc;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,42 +20,42 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class CheckCaptchaCommand implements CaptchaCommand {
+public class CaptchaKeyCommand implements JsonCommand {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
 		
-		String clientId = "o_JfUkabMp6WRi2tVAVi";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "CpuP_zc3Z5";//애플리케이션 클라이언트 시크릿값";
-
-        String code = "1"; // 키 발급시 0,  캡차 이미지 비교시 1로 세팅
-        String key = request.getParameter("key");	// 캡차 키 발급시 받은 키값
-        String value = request.getParameter("input_key");	// 사용자가 입력한 캡차 이미지 글자값
-        String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code + "&key=" + key + "&value=" + value;
-
-        Map<String, String> requestHeaders = new HashMap<>();
+		// 1. 네이버에게서 캡차 키 발급 받기
+		String clientId = "o_JfUkabMp6WRi2tVAVi";
+		String clientSecret = "CpuP_zc3Z5";
+		
+		// Ex01_getCaptchaKey.java 를 실행하고, String key 를 받아온다
+		
+		String code = "0"; // 키 발급시 0,  캡차 이미지 비교시 1로 세팅
+        String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code;
+		
+		Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-        String responseBody = get(apiURL, requestHeaders);
-		
+        String responseBody = get(apiURL, requestHeaders);	// 네이버가 발급해 준 key 값이 저장된 reponseBody
+
         // responseBody
-        // 1. 성공
-        // {"result":true,"responseTime":14.13}
-        // 2. 실패
-        // {"result":false,"responseTime":8.8}
-        System.out.println(responseBody);
+        // {"key":"발급받은 키값"}
         
+        // 발급받은 키값을 String key 에 저장한다.
+        String key = "";
         JSONParser parser = new JSONParser();
-        JSONObject obj = (JSONObject)parser.parse(responseBody);
-        boolean result = (boolean)obj.get("result");
+        System.out.println("responseBody Log : " + responseBody);
+        System.out.println("parser Log : " + parser);
+        Object obj = parser.parse(responseBody);
+        JSONObject jsonObj = (JSONObject)obj;
+        key = (String)jsonObj.get("key");
         
-        // 성공/실패 유무를 판단할 resultPage.jsp 로 result 값을 전달한다.
-        request.setAttribute("result", result);
-        
-		return "member/result/resultPage.jsp";
+        System.out.println("key log : "+key);
+		return key;
 	}
-	
+
+	// Method : get
 	private static String get(String apiUrl, Map<String, String> requestHeaders){
         HttpURLConnection con = connect(apiUrl);
         try {
@@ -100,5 +104,5 @@ public class CheckCaptchaCommand implements CaptchaCommand {
             throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
         }
     }
-
+	
 }

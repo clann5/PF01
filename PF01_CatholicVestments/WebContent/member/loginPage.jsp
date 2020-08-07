@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function fn_refresh_image() {
-		location.href = '/CatholicVestments/getCaptchaImage.api';
+		location.href = '/CatholicVestments/getCaptchaImage.member';
 	}
 	function fn_login(f) {
-		f.action = '/CatholicVestments/login.api';
+		f.action = '/CatholicVestments/login.member';
 		f.submit();
 	}
 </script>
