@@ -25,7 +25,10 @@
 	20.8.1 - 전송방식 설정(common.ViewAndForward) -- dto, table 수정, DML작업, File Upload / Download(1)
 	20.8.2 - File Download(2), Delete, Update, 조회수 추가, 조회수 중복증가 해결(session)
 	20.8.3 - kakaoMap API -- front:javascript 사용
-	20.8.? - naverCaptcha API -- back:java 사용
+	20.8.5 - naverCaptcha API -- back:java 사용
+	20.8.6 - 회원 테이블 만들것
+	20.8.? - Ajax 호출
+	20.8.? - 댓글 만들기 + ajax로 새로고침
 
 
 4. 작업 순서
