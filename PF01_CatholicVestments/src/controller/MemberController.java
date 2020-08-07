@@ -65,6 +65,11 @@ public class MemberController extends HttpServlet {
 				break;
 				
 				
+			case "loginPage.member":
+				vaf = new ViewAndForward();
+				vaf.setPath("member/loginPage.jsp");
+				vaf.setIsRedirect(true);
+				break;
 			case "/signupPage.member":
 				vaf = new ViewAndForward();
 				vaf.setPath("member/signup.jsp");
@@ -75,9 +80,22 @@ public class MemberController extends HttpServlet {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("path log : " + path);
+		
+		// vaf
+		if (vaf != null) {
+			if (vaf.getIsRedirect()) {
+				response.sendRedirect(vaf.getPath());
+			} else {
+				request.getRequestDispatcher(vaf.getPath()).forward(request, response);
+			}
+		}
+		// path
+		if (path != null) {
+			request.getRequestDispatcher(path).forward(request, response);
+			System.out.println("path log : " + path);
+		}
+		
 		System.out.println("result log : " + result);
-		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

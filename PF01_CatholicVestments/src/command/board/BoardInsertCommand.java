@@ -28,20 +28,20 @@ public class BoardInsertCommand implements BoardCommand {
 		MultipartRequest mr = new MultipartRequest(request, realPath, 1024*1024*10,"utf-8",new DefaultFileRenamePolicy());
 
 		BoardDto boardDto = new BoardDto();
-		String title = mr.getParameter("title");	
-		String user_id = mr.getParameter("user_id");
-		String content = mr.getParameter("content");
-		String filename = mr.getFilesystemName("filename");
-		String pw = mr.getParameter("pw");
+		String bTitle = mr.getParameter("bTitle");	
+		String mId = mr.getParameter("mId");
+		String bContent = mr.getParameter("bContent");
+		String bFilename = mr.getFilesystemName("bFilename");
+		String bPw = mr.getParameter("bPw");
 		
-		boardDto.setTitle(title);
-		boardDto.setUser_id(user_id);
-		boardDto.setContent(content);
-		boardDto.setPw(pw);
-		if (mr.getFile("filename") == null) {
-			boardDto.setFilename("");
+		boardDto.setbTitle(bTitle);
+		boardDto.setmId(mId);
+		boardDto.setbContent(bContent);
+		boardDto.setbPw(bPw);
+		if (mr.getFile("bFilename") == null) {
+			boardDto.setbFilename("");
 		} else {
-			boardDto.setFilename(filename);
+			boardDto.setbFilename(bFilename);
 		}
 		
 		

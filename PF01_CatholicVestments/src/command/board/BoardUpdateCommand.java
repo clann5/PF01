@@ -29,17 +29,17 @@ public class BoardUpdateCommand implements BoardCommand {
 		
 		MultipartRequest mr = new MultipartRequest(request, realPath, 1024*1024*10,"utf-8",new DefaultFileRenamePolicy());
 		
-		int no = Integer.parseInt(mr.getParameter("no"));
-		String title = mr.getParameter("title");
-		String content = mr.getParameter("content");
+		int bNo = Integer.parseInt(mr.getParameter("bNo"));
+		String bTitle = mr.getParameter("nTitle");
+		String bContent = mr.getParameter("bContent");
 		
 		BoardDto boardDto = new BoardDto();
-		boardDto.setNo(no);
-		boardDto.setTitle(title);
-		boardDto.setContent(content);
+		boardDto.setbNo(bNo);
+		boardDto.setbTitle(bTitle);
+		boardDto.setbContent(bContent);
 		
 		HttpSession session = request.getSession();
-		String oldFile = ((BoardDto)session.getAttribute("boardDto")).getFilename();
+		String oldFile = ((BoardDto)session.getAttribute("boardDto")).getbFilename();
 		
 		File newFile = mr.getFile("filename");
 
@@ -53,7 +53,7 @@ public class BoardUpdateCommand implements BoardCommand {
 		
 		// 새 파일 저장
 		if (newFile != null) {
-			boardDto.setFilename(mr.getFilesystemName("filename"));
+			boardDto.setbFilename(mr.getFilesystemName("bFilename"));
 		}
 		
 		int result = BoardDao.getInstance().updateBoard(boardDto); 
